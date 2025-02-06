@@ -1,0 +1,82 @@
+/* Login.css */
+
+/* Contenedor principal que ocupará toda la ventana */
+.login-container {
+  position: relative; /* Necesario para que el fondo de la imagen cubra todo el contenedor */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  overflow: hidden; /* Evita el scroll si la imagen es más grande que la ventana */
+}
+
+/* Imagen de fondo */
+.login-image {
+  position: absolute; /* Permite que la imagen esté detrás del contenido */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Asegura que la imagen cubra todo el contenedor */
+  z-index: -1; /* Envía la imagen al fondo */
+}
+
+/* Estilo del cuadro de login */
+.login-box {
+  background: rgba(236, 233, 233, 0.694);
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  width: 300px;
+  border: 2px solid #e8eee8; /* Borde más visible */
+  position: relative; /* Asegura que el cuadro de login esté sobre la imagen */
+  z-index: 1; /* Mantiene el cuadro de login encima de la imagen */
+}
+
+/* Estilo para los encabezados */
+h2 {
+  margin-bottom: 20px;
+  color: #333;
+}
+
+/* Estilo para los grupos de entrada */
+.input-group {
+  margin-bottom: 15px;
+  text-align: left;
+}
+
+.input-group label {
+  display: block;
+  margin-bottom: 5px;
+  color: #555;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+/* Estilo para los mensajes de error */
+.error {
+  color: red;
+  margin-top: 10px;
+}
+
+/* Estilo para el botón de login */
+.login-button {
+  width: 100%;
+  padding: 10px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.login-button:hover {
+  background-color: #45a049;
+}
+

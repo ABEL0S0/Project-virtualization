@@ -1,0 +1,46 @@
+version: '3.8'
+
+services:
+  database:
+    image: mysql:8.0
+    container_name: mysql-container
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: mydb
+      MYSQL_USER: admin
+      MYSQL_PASSWORD: admin
+    ports:
+      - "3309:3306"
+    volumes:
+      - db_data:/var/lib/mysql
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: spring-container
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://database:3306/mydb
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: root
+      UPLOAD_DIR: /odontogramas  # Establece el directorio de imágenes
+    ports:
+      - "8080:8080"
+    volumes:
+      - images:/odontogramas  # Volumen para las imágenes
+    depends_on:
+      - database
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: vite-container
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend  # Asegúrate de que el frontend espere al backend
+
+volumes:
+  db_data:
+  images:
